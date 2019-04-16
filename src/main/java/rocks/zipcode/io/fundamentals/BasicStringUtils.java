@@ -40,6 +40,7 @@ public class BasicStringUtils {
      */
     public static String removeSpecifiedCharacters(String string, String charactersToRemove) {
 
+
 //        Set<Character> set = new HashSet<>();
 //        for (int i = 0; i < string.length() ; i++) {
 //            for (int j = 0; j <charactersToRemove.length() ; j++) {
@@ -48,6 +49,11 @@ public class BasicStringUtils {
 //                    set.add(string.charAt(i));
 //                }}}
 //        return set.toString();
+//        List<String> list = new ArrayList<>();
+//        for (int i = 0; i < string.length(); i++) {
+//            list.add(string);
+//        }
+//        list.removeAll();
 
         return string.replaceAll(charactersToRemove ,"");
     }

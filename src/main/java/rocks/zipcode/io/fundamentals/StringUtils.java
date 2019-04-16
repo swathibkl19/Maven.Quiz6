@@ -37,19 +37,18 @@ public class StringUtils {
      * @return near-identical string whose characters at specified indices are capitalized
      */
     public static String upperCaseIndices(String string, Integer... indices) {
-       String str ="";
+       //String str ="";
         Integer size = indices.length;
-      //  for (int i = 0; i < indices.length ; i++) {
-            System.out.println(indices.getClass());
+        for (int i = 0; i < indices.length ; i++) {
 
-//            if(i == indices )
-//
-//           char c = string.charAt(i);
-           //  str += Character.toUpperCase(i);
+           String str = string.substring(indices[i],indices[i]+1);
+           Character character = str.toUpperCase().charAt(0);
+           string = replaceAtIndex(string,character,indices[i]);
+        }
 
-//        }
+        return string;
 
-        return str;
+
     }
 
     /**
@@ -77,9 +76,9 @@ public class StringUtils {
 
        StringBuilder sb = new StringBuilder();
        sb.append(stringToBeManipulated);
-       Character chr = sb.charAt(index);
-       sb.substring(index).replace(chr ,replacementValue);
+       sb.replace(index , index+1 ,replacementValue.toString());
 
-        return String.valueOf(sb);
+
+        return sb.toString();
     }
 }
