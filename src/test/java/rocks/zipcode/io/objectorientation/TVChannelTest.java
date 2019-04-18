@@ -15,8 +15,7 @@ public class TVChannelTest {
     }
 
     @Test
-    public void test2() {
-        test(1, "CNN");
+    public void test2() { test(1, "CNN");
     }
 
     @Test

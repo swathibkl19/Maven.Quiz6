@@ -1,6 +1,7 @@
 package rocks.zipcode.io.fundamentals;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BasicStringUtils {
     /**
@@ -41,20 +42,18 @@ public class BasicStringUtils {
     public static String removeSpecifiedCharacters(String string, String charactersToRemove) {
 
 
-//        Set<Character> set = new HashSet<>();
-//        for (int i = 0; i < string.length() ; i++) {
-//            for (int j = 0; j <charactersToRemove.length() ; j++) {
-//
-//                if(string.charAt(i) != charactersToRemove.charAt(j)){
-//                    set.add(string.charAt(i));
-//                }}}
-//        return set.toString();
-//        List<String> list = new ArrayList<>();
-//        for (int i = 0; i < string.length(); i++) {
-//            list.add(string);
-//        }
-//        list.removeAll();
+        return Arrays.asList(string.split(""))
+                .stream()
+                .filter(element -> !removeCharacterSubLoop(element,charactersToRemove))
+                .collect(Collectors.joining());
 
-        return string.replaceAll(charactersToRemove ,"");
+
+
+    }
+    public static Boolean  removeCharacterSubLoop(String givenString , String stringToRemove){
+        return Arrays.stream(stringToRemove.split(""))
+                .anyMatch(element -> element.equals(givenString));
+
+
     }
 }

@@ -1,6 +1,7 @@
 package rocks.zipcode.io.collections;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -13,10 +14,10 @@ public class CollectionUtils {
      */
     public static <E> List<E> toList(Collection collection) {
         List<E> list = new ArrayList<>();
-        list.add((E) collection);
+        list.addAll(collection);
 
        // return list.toArray(new E[]);
-        return null;
+        return list;
     }
 
     /**
@@ -25,7 +26,12 @@ public class CollectionUtils {
      * @return true if `nestedCollection` contains a collection with contents identical to `collection`
      */
     public static Boolean contains(Collection<? extends Collection<?>> nestedCollection, Collection<?> collection) {
-        return null;
+
+//        System.out.println(nestedCollection);
+//        System.out.println(collection);
+//        System.out.println(nestedCollection.contains(collection));
+
+        return nestedCollection.contains(collection);
     }
 
     /**
@@ -33,7 +39,13 @@ public class CollectionUtils {
      * @return a single collection containing each of the collections passed in as an argument
      */
     public static Collection<? extends Collection<?>> nest(Collection<?>... collections) {
-        return null;
+
+
+        List<Collection<?>> list = new ArrayList<>();
+        list.addAll(Arrays.asList(collections));
+       // System.out.println(list);
+
+        return list;
     }
 
     /**
@@ -41,6 +53,14 @@ public class CollectionUtils {
      * @return a single collection containing the aggregate contents of each collection passed in as an argument
      */
     public static Collection<?> flatten(Collection<?>... collections) {
-        return null;
+        List<Object> list = new ArrayList<>();
+        for (Collection<?> c:collections) {
+            for(Object e : c){
+                list.add(e);
+            }
+        }
+
+       // System.out.println(list);
+        return list;
     }
 }

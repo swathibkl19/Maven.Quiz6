@@ -14,21 +14,33 @@ public class StringUtils {
      */
     public static Collection<String> getAllCasings(String string) {
         // get length of string
-        Integer length = string.length();
-       // System.out.println(length);
         // get range of length
-        String range = string.substring(0,length);
-        //System.out.println(range);
-        // get power-set of range
-        Long pow_set_size =
-                (long)Math.pow(2, Double.parseDouble(range));
-        System.out.println(pow_set_size);
-
-        //Set<String> rest = new HashSet<>();
-
         // for every set in power-set
-            // uppercase indices of string using set
-        return null;
+        // uppercase indices of string using set
+        Integer length = 0;
+        Integer sLength = string.length();
+        String str = "";
+        String[] output = new String[ (int) Math.pow(2,sLength)];
+        Collection<String> coloutput = Arrays.asList(output);
+        //System.out.println(coloutput);
+
+        for (int i = 0; i < output.length; i++) {
+            length = Integer.toBinaryString(i).length();
+           // System.out.println(length);
+            str = length < sLength
+                    ? (new String(new char[sLength - length]).replace("\0", "0") + Integer.toBinaryString(i) )
+                    : Integer.toBinaryString(i);
+            String s = "";
+            for (int j = 0; j < sLength; j++) {
+                s += str.substring(j, j + 1).equals("0")
+                        ? string.substring(j, j + 1).toLowerCase()
+                        : string.substring(j, j + 1).toUpperCase();
+            }
+            output[i] = s;
+        }
+       // System.out.println(coloutput);
+        return coloutput;
+
     }
 
     /**
